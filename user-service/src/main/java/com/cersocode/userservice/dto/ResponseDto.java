@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ResponseDto {
-    private DepartmentDto departmentDto;
-    private UserDto userDto;
+    private DepartmentDto department;
+    private UserDto user;
 }
