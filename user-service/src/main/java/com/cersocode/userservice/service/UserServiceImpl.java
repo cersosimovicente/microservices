@@ -18,7 +18,9 @@ public class UserServiceImpl implements UserService{
 
     private UserRepository userRepository;
    // private RestTemplate restTemplate;
-    private WebClient webClient;
+   // private WebClient webClient;
+
+    private APIClient apiClient;
 
     @Override
     public User saveUser(User user) {
@@ -39,12 +41,15 @@ public class UserServiceImpl implements UserService{
 //        System.out.println(responseEntity.getStatusCode());
 //        responseDto.setUserDto(userDto);
 //        responseDto.setDepartmentDto(departmentDto);
-
-        DepartmentDto departmentDto = webClient.get()
-                .uri("http://localhost:8080/api/departments/" + user.getDepartmentId())
-                .retrieve()
-                .bodyToMono(DepartmentDto.class)
-                .block();
+//
+//        DepartmentDto departmentDto = webClient.get()
+//                .uri("http://localhost:8080/api/departments/" + user.getDepartmentId())
+//                .retrieve()
+//                .bodyToMono(DepartmentDto.class)
+//                .block();
+//        responseDto.setUser(userDto);
+//        responseDto.setDepartment(departmentDto);
+        DepartmentDto departmentDto = apiClient.getDepartmentById(user.getDepartmentId());
         responseDto.setUser(userDto);
         responseDto.setDepartment(departmentDto);
 
